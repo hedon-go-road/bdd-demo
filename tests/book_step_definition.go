@@ -38,7 +38,7 @@ func init() {
 		WithInitialDatabase(user, password, dbname),
 		WithWaitStrategy(wait.ForLog("database system is ready to accept connections").
 			WithOccurrence(2).
-			WithStartupTimeout(5*time.Second),
+			WithStartupTimeout(15*time.Second),
 		),
 	)
 	if err != nil {
