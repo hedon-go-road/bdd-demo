@@ -33,7 +33,7 @@ func init() {
 
 	port, _ := nat.NewPort("tcp", "5432")
 
-	container, err := startContainer(ctx,
+	container, _ := startContainer(ctx,
 		WithPort(port.Port()),
 		WithInitialDatabase(user, password, dbname),
 		WithWaitStrategy(wait.ForLog("database system is ready to accept connections").
@@ -41,9 +41,6 @@ func init() {
 			WithStartupTimeout(120*time.Second),
 		),
 	)
-	if err != nil {
-		panic(err)
-	}
 
 	containerPort, _ := container.MappedPort(ctx, port)
 	host, _ := container.Host(ctx)
