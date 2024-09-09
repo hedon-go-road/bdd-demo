@@ -10,7 +10,6 @@ import (
 	"net/http/httptest"
 	"os"
 	"reflect"
-	"time"
 
 	"github.com/cucumber/godog"
 	"github.com/docker/go-connections/nat"
@@ -37,8 +36,7 @@ func init() {
 		WithPort(port.Port()),
 		WithInitialDatabase(user, password, dbname),
 		WithWaitStrategy(wait.ForLog("database system is ready to accept connections").
-			WithOccurrence(2).
-			WithStartupTimeout(15*time.Second),
+			WithOccurrence(2),
 		),
 	)
 	if err != nil {
