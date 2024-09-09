@@ -16,7 +16,7 @@ type postgresContainerOption func(req *testcontainers.ContainerRequest)
 
 func WithWaitStrategy(strategies ...wait.Strategy) func(req *testcontainers.ContainerRequest) {
 	return func(req *testcontainers.ContainerRequest) {
-		req.WaitingFor = wait.ForAll(strategies...).WithDeadline(1 * time.Second)
+		req.WaitingFor = wait.ForAll(strategies...).WithDeadline(120 * time.Second)
 	}
 }
 
